@@ -16,7 +16,7 @@ private:
 
     bool needRestart;
     int currentPlayer = 1; // 1 for player 1, 2 for player 2
-    Board board;
+    Board* board;
     Input input;
 
     void drawIntro();

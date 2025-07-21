@@ -11,10 +11,8 @@ public:
     void setOnEscapePress(const std::function<void()>& callback);
     void setOnRPress(const std::function<void()>& callback);
     void processInput();
-    #if defined(__APPLE__) || defined(__linux__)
     bool hasInput();
     int getChar();
-    #endif
 private:
     std::function<void()> onUpPress;
     std::function<void()> onDownPress;
