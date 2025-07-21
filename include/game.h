@@ -1,6 +1,4 @@
 #pragma once
-#include <iostream>
-#include <array>
 #include <board.h>
 #include <input.h>
 
@@ -15,9 +13,12 @@ public:
     void quit();
     int getCurrentPlayer() const { return currentPlayer; }
 private:
+
+    bool needRestart;
     int currentPlayer = 1; // 1 for player 1, 2 for player 2
     Board board;
     Input input;
 
+    void drawIntro();
     void refreshCellSelection(bool up, bool down, bool left, bool right);
 };

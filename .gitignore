@@ -31,6 +31,8 @@
 *.out
 *.app
 
+*.DS_Store
 /build
+/.cache
 /.vscode
 /note.txt

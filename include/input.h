@@ -1,5 +1,4 @@
 #pragma once
-#include <conio.h>
 #include <functional>
 
 class Input{
@@ -10,7 +9,12 @@ public:
     void setOnRightPress(const std::function<void()>& callback);
     void setOnEnterPress(const std::function<void()>& callback);
     void setOnEscapePress(const std::function<void()>& callback);
+    void setOnRPress(const std::function<void()>& callback);
     void processInput();
+    #if defined(__APPLE__) || defined(__linux__)
+    bool hasInput();
+    int getChar();
+    #endif
 private:
     std::function<void()> onUpPress;
     std::function<void()> onDownPress;
@@ -18,5 +22,6 @@ private:
     std::function<void()> onRightPress;
     std::function<void()> onEnterPress;
     std::function<void()> onEscapePress;
+    std::function<void()>onRPress;
 
 };

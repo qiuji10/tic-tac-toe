@@ -6,8 +6,8 @@ class Board {
 
 public:
     void moveSelect(bool up, bool down, bool left, bool right);
-    void setCell(int index, int value);
-    std::string displayBoard() const;
+    bool setCell(int index, int value);
+    void drawBoard() const;
     bool isWinner(int player) const;
     int getCurrentSelectCell() const { return currentSelectCell; }
 private:

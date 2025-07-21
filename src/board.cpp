@@ -1,5 +1,5 @@
-#include <board.h>
 #include <iostream>
+#include <board.h>
 
 void Board::moveSelect(bool up, bool down, bool left, bool right) {
     if (up && currentSelectCell >= 3) {
@@ -22,10 +22,17 @@ void Board::moveSelect(bool up, bool down, bool left, bool right) {
     }
 }
 
-void Board::setCell(int index, int value) {
+bool Board::setCell(int index, int value) {
+    
+    if (board[index] == 1 || board[index] == 2)
+        return false;
+
     if (index >=0 && index < 9) {
         board[index] = value;
+        return true;
     }
+
+    return false;
 }
 
 bool Board::isWinner(int player) const {
@@ -42,15 +49,18 @@ bool Board::isWinner(int player) const {
     return false;
 }
 
-std::string Board::displayBoard() const {
+void Board::drawBoard() const {
     
-    return getCellSymbol(board[0], 0) + " | " + getCellSymbol(board[1], 1) + " | " + getCellSymbol(board[2], 2) + "\n" +
+    std::cout << getCellSymbol(board[0], 0) + " | " + getCellSymbol(board[1], 1) + " | " + getCellSymbol(board[2], 2) + "\n" +
             "---------------\n" +
             getCellSymbol(board[3], 3) + " | " + getCellSymbol(board[4], 4) + " | " + getCellSymbol(board[5], 5) + "\n" + 
             "---------------\n" +
-            getCellSymbol(board[6], 6) + " | " + getCellSymbol(board[7], 7) + " | " + getCellSymbol(board[8], 8) + "\n";
+            getCellSymbol(board[6], 6) + " | " + getCellSymbol(board[7], 7) + " | " + getCellSymbol(board[8], 8) << std::endl;
 }
 
 std::string Board::getCellSymbol(int player, int cell) const {
-    return player == 1 ? " X " : player == 2 ? " O " : currentSelectCell == cell ? "[ ]" : "   ";
+
+    return std::string(currentSelectCell == cell ? "[" : " ") + 
+            (player == 1 ? "X" : player == 2 ? "O" : " " ) +
+            (currentSelectCell == cell ? "]" : " ");
 }
