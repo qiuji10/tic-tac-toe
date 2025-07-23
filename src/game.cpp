@@ -101,6 +101,8 @@ void Game::process() {
 }
 
 void Game::quit() {
+    delete board;
+    board = nullptr;
     std::cout << "Game over. Thanks for playing!" << std::endl;
     exit(0);
 }
